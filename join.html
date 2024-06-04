@@ -90,11 +90,14 @@
                 <div class="header-text">
                   <h4>Join Us!</h4>
                   <h4><em>Join</em> Our Ever Growing Community</h4>
-                  <!-- *****  Browse Button Start
-                  <div class="main-button">
-                    <a href="browse.html">Browse Now</a>
+                <!-- ***** FORM Start ***** -->
+                  <form>  <div class="input-group">
+                    <input type="email" class="form-control" id="emailAddress" aria-describedby="emailHelp" placeholder="Enter your email address">
                   </div>
-                    Browse Button End *****-->
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <br>
+                  <button type="button" class="btn btn-primary" id="joinButton">Join Now</button>  </form>        
+              <!-- ***** FORM END ***** -->
                 </div>
               </div>
             </div>
@@ -441,6 +444,17 @@
 
 
   <!-- Scripts -->
+
+  <script>
+    const joinButton = document.getElementById('joinButton');
+    const emailAddress = document.getElementById('emailAddress');
+  
+    joinButton.addEventListener('click', () => {
+      const email = emailAddress.value;
+      window.location.href = `mailto:yourcompanyemail@example.com?subject=Join%20Request&body=Hi,%20I%20want%20to%20join%20your%20community.%20My%20email%20is%20${email}`;
+    });
+  </script>
+  
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

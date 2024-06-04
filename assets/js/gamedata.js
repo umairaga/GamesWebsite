@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Your CSV file URL
-    var csvURL = "https://drive.google.com/file/d/1_lDUzQeSfG6BnFfepOfIuEn5WU9NiikQ/view?usp=sharing";
+    var csvURL = "assets/gamedata.csv";
   
     $.ajax({
       dataType: "text",
