@@ -21,7 +21,15 @@ function processData(csvData) {
 
   // Assuming the first row contains headers, parse them
   var headers = rows[0].split(",");
+
+  console.log("Headers:", headers);  // Log the headers for debugging
   const gameDataIndex = headers.indexOf("URL"); // Find URL column index
+
+  if (gameDataIndex === -1) {
+    console.error("URL column not found in headers.");
+    return; // Exit the function if URL header is not found
+  }
+
   console.log("gameDataIndex:", gameDataIndex); // Log for debugging
 
   // Remove the header row (optional)
