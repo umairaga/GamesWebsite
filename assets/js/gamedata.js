@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //gihub pagess
-    var csvURL = "https://github.com/umairaga/GamesWebsite/blob/main/assets/gamedata.csv";
+    var csvURL = "assets/gamedata.csv";
 
 
     $.ajax({
