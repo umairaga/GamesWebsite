@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //gihub pagess
-    //var csvURL = "assets/gamedata.csv";
-     var csvURL = "https://drive.google.com/file/d/1ORN60MciTgjMmvj0IQksu5MR_VGerGfo/view?usp=sharing";
+    var csvURL = "assets/gamedata.csv";
+     //var csvURL = "https://drive.google.com/file/d/1ORN60MciTgjMmvj0IQksu5MR_VGerGfo/view?usp=sharing";
 
 
     $.ajax({
