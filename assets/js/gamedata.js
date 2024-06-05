@@ -52,23 +52,58 @@ function processData(csvData) {
     games.push(game); // Add game object to games array
   }
   console.log("Extracted games:", games); // Check processed game data
-  createGameItems(games); // Pass games data to item creation function
+  // createGameItems(games); // Pass games data to item creation function
+  
+  //new
+  var gameItem = createGameItems(games); // Pass games data to item creation function
+  //   // Append the game item to the .most-popular div
+  $(".most-popular .row").append(gameItem);
+
 }
 
+//HTML approach
 function createGameItems(games) {
-  document.addEventListener("DOMContentLoaded", function () {
-    const gameItems = document.querySelectorAll('.item');
+  const gameContainer = document.querySelector('.game-container'); // Assuming container element
 
-    games.forEach((game, index) => {
-      const gameItem = gameItems[index]; // Assuming data matches order
+  games.forEach(game => {
+    const gameItemHtml = `
+      <div class="col-lg-3 col-sm-6">
+        <div class="item">
+          <a href="index.html">
+            <img src="${game.image}" alt="">
+          </a>
+          <h4>${game.title}<br><span>${game.genre}</span></h4>
+          <ul>
+            <div class="main-button col-sm-6">
+              <a href=${game.url}>PLAY</a>
+            </div>
+          </ul>
+        </div>
+      </div>
+    `;
 
-      const gameLink = gameItem.querySelector('.game-link');
-      gameLink.href = game.url; // Set link based on URL property
+    const gameItemElement = document.createElement('div');
+    gameItemElement.innerHTML = gameItemHtml;
 
-      const playButton = gameItem.querySelector('.main-button a');
-      playButton.addEventListener('click', () => {
-        window.location.href = gameLink.href; // Open link on button click
-      });
-    });
+    gameContainer.appendChild(gameItemElement);
   });
 }
+
+
+// function createGameItems(games) {
+//   document.addEventListener("DOMContentLoaded", function () {
+//     const gameItems = document.querySelectorAll('.item');
+
+//     games.forEach((game, index) => {
+//       const gameItem = gameItems[index]; // Assuming data matches order
+
+//       const gameLink = gameItem.querySelector('.game-link');
+//       gameLink.href = game.url; // Set link based on URL property
+
+//       const playButton = gameItem.querySelector('.main-button a');
+//       playButton.addEventListener('click', () => {
+//         window.location.href = gameLink.href; // Open link on button click
+//       });
+//     });
+//   });
+// }
