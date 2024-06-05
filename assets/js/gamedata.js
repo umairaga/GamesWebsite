@@ -1,6 +1,7 @@
 $(document).ready(function () {
     //gihub pagess
-    var csvURL = "assets/gamedata.csv";
+    //var csvURL = "assets/gamedata.csv";
+     var csvURL = "https://drive.google.com/file/d/1_lDUzQeSfG6BnFfepOfIuEn5WU9NiikQ/view?usp=sharing";
 
 
     $.ajax({
