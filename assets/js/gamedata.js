@@ -3,7 +3,6 @@ $(document).ready(function () {
     var csvURL = "assets/gamedata.csv";
      //var csvURL = "https://drive.google.com/file/d/1ORN60MciTgjMmvj0IQksu5MR_VGerGfo/view?usp=sharing";
 
-
     $.ajax({
       dataType: "text",
       url: csvURL,
@@ -48,6 +47,19 @@ $(document).ready(function () {
   }
   
   function createGameItems(games) {
-    // ... rest of your code
+    const gameItems = document.querySelectorAll('.item'); // Select all game items
+
+    games.forEach((game, index) => {
+        const gameItem = gameItems[index]; // Assuming data matches order
+
+        const gameLink = gameItem.querySelector('.game-link');
+        gameLink.href = game.url; // Set link based on URL property
+
+        const playButton = gameItem.querySelector('.main-button a');
+        playButton.addEventListener('click', () => {
+            window.location.href = gameLink.href; // Open link on button click
+        });
+    });
+
   }
   
