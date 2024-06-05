@@ -44,13 +44,14 @@ function processData(csvData) {
     var game = {
       title: gameData[0],
       genre: gameData[1],
-      image: "assets/images/" + gameData[2] + ".jpg", // Assuming image filenames match
-      url: gameData[gameDataIndex], // Access URL based on index
+      image: "assets/images/" + gameData[2],// + ".jpg", // Assuming image filenames match
+      //   url: gameData[gameDataIndex], // Access URL based on index
+      url: gameData[3], // Access URL based on index
     };
 
     games.push(game); // Add game object to games array
   }
-
+  console.log("Extracted games:", games); // Check processed game data
   createGameItems(games); // Pass games data to item creation function
 }
 
