@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  // CSV URL
   var csvURL = "assets/gamedata.csv";
 
   $.ajax({
@@ -16,69 +15,57 @@ $(document).ready(function () {
 
 function processData(csvData) {
   var rows = csvData.split(/\r?\n|\r/);
-  var headers = rows[0].split(",");
-  
-  rows.shift(); // Remove the header row
+  var headers = rows[0].split(",").map(header => header.trim());
+  const gameDataIndex = headers.indexOf("URL");
 
-  var games = rows.map(function(row) {
-    var gameData = row.split(",");
-    return {
+  if (gameDataIndex === -1) {
+    console.error("URL column not found in headers.");
+    return;
+  }
+
+  rows.shift();
+  var games = [];
+  for (var i = 0; i < rows.length; i++) {
+    var gameData = rows[i].split(",").map(data => data.trim());
+    var game = {
       title: gameData[0],
       genre: gameData[1],
       image: "assets/images/" + gameData[2],
-      url: gameData[3],
+      url: gameData[gameDataIndex]
     };
-  });
+    games.push(game);
+  }
 
   createGameItems(games);
 }
 
-// function createGameItems(games) {
-//   document.addEventListener("DOMContentLoaded", function () {
-//     const gameItems = document.querySelectorAll('.item');
-
-//     // Ensure the loop only iterates over the available game data
-//     games.forEach((game, index) => {
-//       if (index < gameItems.length) {  // Check if there's a corresponding game item element
-//         const gameItem = gameItems[index];
-
-//         const gameLink = gameItem.querySelector('.game-link');
-//         gameLink.href = game.url; // Set link based on URL property
-//         gameLink.querySelector('img').src = game.image; // Set image source
-//         gameLink.querySelector('img').alt = game.title; // Set image alt text
-
-//         const gameTitle = gameItem.querySelector('h4');
-//         gameTitle.innerHTML = `${game.title}<br><span>${game.genre}</span>`; // Set title and genre
-
-//         const playButton = gameItem.querySelector('.main-button a');
-//         playButton.addEventListener('click', () => {
-//           window.location.href = gameLink.href; // Open link on button click
-//         });
-//       }
-//     });
-//   });
-// }
-
-
 function createGameItems(games) {
-  const container = document.getElementById('most-popular-games');
-  
+  const gameContainer = document.getElementById('most-popular-games');
+  const iframe = document.getElementById('game-iframe');
+
   games.forEach(game => {
     const gameItem = document.createElement('div');
-    gameItem.classList.add('col-lg-3', 'col-sm-6');
-    gameItem.innerHTML = `
-      <div class="item">
-        <a href="${game.url}" class="game-link">
-          <img src="${game.image}" alt="${game.title}">
-        </a>
-        <h4>${game.title}<br><span>${game.genre}</span></h4>
-        <ul>
-          <div class="main-button col-sm-6">
-            <a href="${game.url}">PLAY</a>
-          </div>
-        </ul>
-      </div>
+    gameItem.classList.add('col-lg-3', 'col-sm-6', 'item');
+
+    const gameContent = `
+      <a href="#" class="game-link">
+        <img src="${game.image}" alt="">
+      </a>
+      <h4>${game.title}<br><span>${game.genre}</span></h4>
+      <ul>
+        <div class="main-button col-sm-6">
+          <a href="#">PLAY</a>
+        </div>
+      </ul>
     `;
-    container.appendChild(gameItem);
+
+    gameItem.innerHTML = gameContent;
+    gameContainer.appendChild(gameItem);
+
+    const playButton = gameItem.querySelector('.main-button a');
+    playButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      iframe.src = game.url;
+    });
   });
 }
