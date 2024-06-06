@@ -343,7 +343,7 @@ Header Style
 }
 
 .header-area {
-  background-color: transparent;
+  background-color: transparent !important;
   position: absolute;
   height: 70px;
   top: 15px;
@@ -698,12 +698,12 @@ Header Style
     margin-top: 70px !important;
   }
   .header-area .main-nav .nav li:first-child {
-    border-top: 1px solid #eee;
+    border-top: 1px solid #393838;
   }
   .header-area .main-nav .nav li {
     width: 100%;
-    background: #fff;
-    border-bottom: 1px solid #eee;
+    background:transparent;
+    border-bottom: 1px solid #393838;
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
@@ -712,11 +712,11 @@ Header Style
     line-height: 50px !important;
     padding: 0px !important;
     border: none !important;
-    background: #fff !important;
-    color: #1e1e1e !important;
+    background: #1f2122 !important;
+    color: #817f7f !important;
   }
   .header-area .main-nav .nav li a:hover {
-    background: #fff !important;
+    background: #1f2122 !important;
     color: #e75e8d!important;
   }
   .header-area .main-nav .nav li:last-child a img {
@@ -724,7 +724,7 @@ Header Style
   }
   .header-area .main-nav .nav li:last-child a:hover {
     color: #ec6090 !important;
-    background-color: transparent !important;
+    background-color: #1f2122 !important;
   }
   .header-area .main-nav .nav li.has-sub ul.sub-menu {
     position: relative;
