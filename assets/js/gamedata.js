@@ -26,7 +26,8 @@ function processData(csvData) {
   rows.shift();
   var games = [];
   for (var i = 0; i < rows.length; i++) {
-    if (rows[i].trim() === "") continue; // Skip empty rows
+    if (rows[i].trim() === "")
+      continue; // Skip empty rows
     var gameData = rows[i].split(",").map(data => data.trim());
     var game = {
       title: gameData[0],

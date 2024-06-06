@@ -799,8 +799,8 @@ Most Popular Style
 */
 
 .most-popular {
-  margin-top: 60px;
-  padding: 30px;
+  margin-top: 10px;
+  padding: 10px;
   background-color: #1f2122;
   border-radius: 23px;
 }
@@ -1164,10 +1164,10 @@ Live Stream Style
 */
 
 .live-stream {
-  margin-top: 60px;
+  margin-top: 20px;
   border-radius: 23px;
   background-color: #1f2122;
-  padding: 30px;
+  padding: 10px;
 }
 
 .live-stream .item {
