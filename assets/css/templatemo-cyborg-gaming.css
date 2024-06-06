@@ -630,7 +630,7 @@ Header Style
     top: 0;
   }
   .header-area .main-nav {
-    background-color: transparent;
+    background-color: #1f2122;
     border-radius: 0px;
   }
   .header-area .main-nav .nav {
