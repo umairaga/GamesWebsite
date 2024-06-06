@@ -42,6 +42,7 @@ function processData(csvData) {
 function createGameItems(games) {
   const gameContainer = document.getElementById('most-popular-games');
   const iframe = document.getElementById('game-iframe');
+  const gameModal = $('#gameModal');
 
   games.forEach(game => {
     const gameItem = document.createElement('div');
@@ -66,6 +67,7 @@ function createGameItems(games) {
     playButton.addEventListener('click', (event) => {
       event.preventDefault();
       iframe.src = game.url;
+      gameModal.modal('show');
     });
   });
 }
